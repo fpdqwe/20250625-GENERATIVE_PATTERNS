@@ -1,7 +1,13 @@
 ﻿namespace App
 {
     /// <summary>
-    /// Represents products
+    /// Represents products. Inherits Entity
+    /// <list type="bullet">
+    /// <item>Guid Id</item>
+    /// <item>string Name</item>
+    /// <item>DateTime DateManufactured</item>
+    /// <item>decimal Price</item>
+    /// </list>
     /// </summary>
     public class Product : Entity, IMyCloneable<Product>
     {

@@ -1,9 +1,16 @@
 ﻿namespace App
 {
     /// <summary>
-    /// Represents all gadgets type of GadgetType
+    /// Represents all gadgets type of GadgetType. Inherits Product
+    /// <list type="bullet">
+    /// <item>Guid Id</item>
+    /// <item>string Name</item>
+    /// <item>DateTime DateManufactured</item>
+    /// <item>decimal Price</item>
+    /// <item>enum : byte GadgetType</item>
+    /// </list>
     /// </summary>
-    public class Gadget : Product, IMyCloneable<Gadget>
+    public class Gadget : Product, IMyCloneable<Gadget>, ICloneable
     {
         public GadgetType GadgetType { get; set; }
         public Gadget(GadgetType type, DateTime dateManufactured, decimal price)
@@ -15,6 +22,10 @@
         public override Gadget Clone()
         {
             return new Gadget(this);
+        }
+        object ICloneable.Clone()
+        {
+            return Clone();
         }
     }
     public enum GadgetType : byte

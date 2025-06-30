@@ -1,9 +1,18 @@
 ﻿namespace App
 {
     /// <summary>
-    /// Represents phones
+    /// Represents phones. Inherits Gadget
+    /// <list type="bullet">
+    /// <item>Guid Id</item>
+    /// <item>string Name</item>
+    /// <item>DateTime DateManufactured</item>
+    /// <item>decimal Price</item>
+    /// <item>enum : byte GadgetType = GadgetType.Phone(const)</item>
+    /// <item>string Brand (+)</item>
+    /// <item>enum : byte PhoneOS (+)</item>
+    /// </list>
     /// </summary>
-    public class Phone : Gadget, IMyCloneable<Phone>
+    public class Phone : Gadget, IMyCloneable<Phone>, ICloneable
     {
         public string Brand { get; set; }
         public PhoneOS OperatingSystem { get; set; }
@@ -18,6 +27,10 @@
         public override Phone Clone()
         {
             return new Phone(this);
+        }
+        object ICloneable.Clone()
+        {
+            return Clone();
         }
     }
     public enum PhoneOS : byte

@@ -2,8 +2,12 @@
 {
     /// <summary>
     /// Base entity class
+    /// <list type="bullet">
+    /// <item>Guid Id</item>
+    /// <item>string Name</item>
+    /// </list>
     /// </summary>
-    public class Entity : IMyCloneable<Entity>
+    public class Entity : IMyCloneable<Entity>, ICloneable
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -19,6 +23,10 @@
         public Entity Clone()
         {
             return new Entity(this);
+        }
+        object ICloneable.Clone()
+        {
+            return Clone();
         }
     }
 }
